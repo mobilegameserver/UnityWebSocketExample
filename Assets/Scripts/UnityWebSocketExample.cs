@@ -11,7 +11,8 @@ class CreateUserReq
 	public string passwd;
 }
 
-public class UnityWebSocketExample : MonoBehaviour {
+public class UnityWebSocketExample : MonoBehaviour
+{
 
 	void OnSendCompleted(bool result)
 	{
@@ -23,7 +24,7 @@ public class UnityWebSocketExample : MonoBehaviour {
 	{
 		var ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
 		yield return StartCoroutine(ws.Connect());
-		
+
 		var req = new CreateUserReq();
 		{
 			req.userName = "userName";
