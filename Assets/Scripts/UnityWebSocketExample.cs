@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.UI;
 
 using System;
 using System.Collections;
@@ -7,23 +8,41 @@ using System.Text;
 
 class CreateUserReq
 {
+	public int msgType = 1101;
+
 	public string userName;
 	public string passwd;
 }
 
+class CreateUserAck
+{
+	public ErrorCode errCode = ErrorCode.NONE;
+}
+
 public class UnityWebSocketExample : MonoBehaviour
 {
+	public Text text;
+
+	WebSocketClient ws;
+	
+	public void Connect()
+	{
+		//ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
+		ws = new WebSocketClient(new Uri("ws://127.0.0.1:20000"));
+		StartCoroutine(ws.Connect());
+	}
 
 	void OnSendCompleted(bool result)
 	{
 		return;
 	}
 
-	// Use this for initialization
-	IEnumerator Start()
+	public void Send()
 	{
-		var ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
-		yield return StartCoroutine(ws.Connect());
+		if (ws.isConnected == false)
+		{
+			return;
+		}
 
 		var req = new CreateUserReq();
 		{
