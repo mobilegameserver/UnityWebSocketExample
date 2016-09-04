@@ -19,7 +19,7 @@ public class WebSocketClient
 		this.uri = uri;
 	}
 
-	public IEnumerator Connect()
+	public void Connect()
 	{
 		webSocket = new WebSocketSharp.WebSocket(uri.ToString());
 		{
@@ -29,11 +29,6 @@ public class WebSocketClient
 			webSocket.OnClose += (sender, e) => isConnected = false;
 
 			webSocket.ConnectAsync();
-
-			while (!isConnected && error == null)
-			{
-				yield return 0;
-			}
 		}
 	}
 
