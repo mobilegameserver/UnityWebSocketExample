@@ -59,12 +59,9 @@ public class UnityWebSocketExample : MonoBehaviour
 			return;
 		}
 
-		var type = new byte[4];
-		Array.Copy(bytes, 0, type, 0, 4);
-		Console.WriteLine(Encoding.UTF8.GetString(type));
+		var str = Encoding.UTF8.GetString(bytes);
+		var type = Convert.ToInt32(str.Substring(0, 4));
 
-		var body = new byte[bytes.Length - 4];
-		Array.Copy(bytes, 4, body, 0, bytes.Length - 4);
-		Console.WriteLine(Encoding.UTF8.GetString(body));
+		var ack = JsonUtility.FromJson<CreateUserAck>(str.Substring(4));
 	}
 }
