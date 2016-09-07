@@ -71,5 +71,6 @@ public class UnityWebSocketExample : MonoBehaviour
 		var type = Convert.ToInt32(str.Substring(0, 5));
 
 		var ack = JsonUtility.FromJson<CreateUserAck>(str.Substring(5));
+		text.text = ack.errCode.ToString();
 	}
 }
