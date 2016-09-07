@@ -29,7 +29,7 @@ public class UnityWebSocketExample : MonoBehaviour
 	public Text text;
 
 	WebSocketClient ws;
-	
+
 	public void Connect()
 	{
 		//ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
