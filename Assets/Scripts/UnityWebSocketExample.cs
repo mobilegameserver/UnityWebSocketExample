@@ -7,8 +7,15 @@ using System.Text;
 
 enum MsgType
 {
-	CREATE_USER_REQ = 11001,
-	CREATE_USER_ACK = 11002,
+	CONNECT_ACK = 11000,
+
+	CREATE_USER_REQ = 11101,
+	CREATE_USER_ACK = 11102,
+}
+
+class ConnectAck
+{
+	public ErrCode errCode;
 }
 
 class CreateUserReq
@@ -70,7 +77,7 @@ public class UnityWebSocketExample : MonoBehaviour
 		var str = Encoding.UTF8.GetString(bytes);
 		var type = Convert.ToInt32(str.Substring(0, 5));
 
-		var ack = JsonUtility.FromJson<CreateUserAck>(str.Substring(5));
+		var ack = JsonUtility.FromJson<ConnectAck>(str.Substring(5));
 		text.text = ack.errCode.ToString();
 	}
 }
