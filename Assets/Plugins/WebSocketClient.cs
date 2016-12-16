@@ -1,6 +1,5 @@
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 using WebSocketSharp;
@@ -21,7 +20,7 @@ public class WebSocketClient
 
 	public void Connect()
 	{
-		webSocket = new WebSocketSharp.WebSocket(uri.ToString());
+		webSocket = new WebSocket(uri.ToString());
 		{
 			webSocket.OnOpen += (sender, e) => isConnected = true;
 			webSocket.OnMessage += (sender, e) => messages.Enqueue(e.RawData);
