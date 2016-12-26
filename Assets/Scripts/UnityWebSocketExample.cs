@@ -36,11 +36,12 @@ public class UnityWebSocketExample : MonoBehaviour
 	public Text text;
 
 	WebSocketClient ws;
+	StringBuilder sb;
 
 	public void Connect()
 	{
 		//ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
-		ws = new WebSocketClient(new Uri("ws://127.0.0.1:20000"));
+		ws = new WebSocketClient(new Uri("ws://127.0.0.1:20001"));
 		ws.Connect();
 	}
 
@@ -75,9 +76,9 @@ public class UnityWebSocketExample : MonoBehaviour
 		}
 
 		var str = Encoding.UTF8.GetString(bytes);
-		var type = Convert.ToInt32(str.Substring(0, 5));
+		var type = str.Substring(2, 5);
 
-		var ack = JsonUtility.FromJson<ConnectAck>(str.Substring(5));
+		var ack = JsonUtility.FromJson<ConnectAck>(str.Substring(9, str.Length - 10));
 		text.text = ack.errCode.ToString();
 	}
 }
