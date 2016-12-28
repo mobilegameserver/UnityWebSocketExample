@@ -36,7 +36,7 @@ public class UnityWebSocketExample : MonoBehaviour
 	public Text text;
 
 	WebSocketClient ws;
-	StringBuilder sb;
+	//StringBuilder sb;
 
 	public void Connect()
 	{
