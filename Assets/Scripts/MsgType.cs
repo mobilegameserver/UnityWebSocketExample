@@ -1,0 +1,7 @@
+﻿enum MsgType
+{
+    SYS_CONNECT_ACK = 11000,
+
+    USER_CREATE_REQ = 11101,
+    USER_CREATE_ACK = 11102,
+}
