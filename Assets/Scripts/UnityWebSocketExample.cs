@@ -18,8 +18,8 @@ public class UnityWebSocketExample : MonoBehaviour
 
 	public void Connect()
 	{
-		ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
-		//ws = new WebSocketClient(new Uri("ws://127.0.0.1:20001"));
+		//ws = new WebSocketClient(new Uri("ws://echo.websocket.org"));
+		ws = new WebSocketClient(new Uri("ws://127.0.0.1:20001"));
 		ws.Connect();
 	}
 
